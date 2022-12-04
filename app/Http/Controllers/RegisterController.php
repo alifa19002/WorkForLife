@@ -33,7 +33,7 @@ class RegisterController extends Controller
         $validatedData['password'] = Hash::make($validatedData['password']);
 
         // User::create($validatedData);
-        $response = Http::asForm()->post("http://apiwfl.herokuapp.com/api/register", [
+        $response = Http::asForm()->post("https://workforlife-be.my.id/api/register", [
             'nama' => $request->input('nama'),
             'username' => $request->input('username'),
             'email' => $request->input('email'),

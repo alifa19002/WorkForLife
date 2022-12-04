@@ -21,7 +21,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $response = Http::get('http://apiwfl.herokuapp.com/api/admin');
+        $response = Http::get('https://workforlife-be.my.id/api/admin');
         $response = $response->object();
 
         return view('admin.rekap', [
@@ -68,7 +68,7 @@ class AdminController extends Controller
         // ]);
 
         // $validatedData['password'] = Hash::make($validatedData['password']);
-        Http::asForm()->post("http://apiwfl.herokuapp.com/api/admin/company/create", [
+        Http::asForm()->post("https://workforlife-be.my.id/api/admin/company/create", [
             'nama' => $request->input('nama'),
             'username' => $request->input('username'),
             'email' => $request->input('email'),
@@ -91,7 +91,7 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        $response = Http::get("http://apiwfl.herokuapp.com/api/company/".$id);
+        $response = Http::get("https://workforlife-be.my.id/api/company/".$id);
         $response = $response->object();
         return view('admin.detail-company', [
             'title' => 'Detail Perusahaan',

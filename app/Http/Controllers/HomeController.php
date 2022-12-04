@@ -9,8 +9,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $post = Http::get('http://apiwfl.herokuapp.com/api/posts');
-        $loker = Http::get('http://apiwfl.herokuapp.com/api/lokers');
+        $post = Http::get('https://workforlife-be.my.id/api/posts');
+        $loker = Http::get('https://workforlife-be.my.id/api/lokers');
         $post = $post->object();
         $loker = $loker->object();
         return view('index', [

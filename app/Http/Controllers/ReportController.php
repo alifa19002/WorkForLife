@@ -28,7 +28,7 @@ class ReportController extends Controller
 
         // return redirect('/posts');
 
-        Http::asForm()->post("http://apiwfl.herokuapp.com/api/report", [
+        Http::asForm()->post("https://workforlife-be.my.id/api/report", [
             'alasan' => $request->input('alasan'),
             'user_id' => $request->input('user_id'),
             'postingan_id' => $request->input('postingan_id')
@@ -39,7 +39,7 @@ class ReportController extends Controller
 
     public function edit($id)
     {
-        $response = Http::get("http://apiwfl.herokuapp.com/api/report/" . $id);
+        $response = Http::get("https://workforlife-be.my.id/api/report/" . $id);
         $response = $response->object();
 
         return view('Reports.editReport', [
@@ -54,7 +54,7 @@ class ReportController extends Controller
             'is_approved' => 'required',
         ];
         $validatedData = $request->validate($rules);
-        Http::asform()->post("http://apiwfl.herokuapp.com/api/report/".$id.'?_method=PUT', [
+        Http::asform()->post("https://workforlife-be.my.id/api/report/".$id.'?_method=PUT', [
             'is_approved' => $request->input('is_approved')
         ]);
         //Report::where('id', $report->id)->update($validatedData);
@@ -66,7 +66,7 @@ class ReportController extends Controller
         // Report::destroy($report->id);
         // return redirect('/admin')->with('success', 'Report has been deleted!');
 
-        Http::delete("http://apiwfl.herokuapp.com/api/report/" . $id);
+        Http::delete("https://workforlife-be.my.id/api/report/" . $id);
         return redirect('/admin')->with('success', 'Report has been deleted!');
     }
 }
