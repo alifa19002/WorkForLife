@@ -34,7 +34,7 @@ class AdminController extends Controller
             'lokers' => $response->vacancy,
             'reports' => $response->report,
             'companies' => $response->company,
-            'events' => $response->event,
+            'events' => $response->events,
             'registration' => $response->regEvent
         ]);
     }
