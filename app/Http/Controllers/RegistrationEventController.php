@@ -20,7 +20,7 @@ class RegistrationEventController extends Controller
 
     public function confirm(Request $request, $id)
     {
-        Http::asForm()->post("https://workforlife-be.my.id/api/registration/" . $id . '?_method=PUT', [
+        Http::asForm()->post("http://workforlife-be.my.id/api/registration/" . $id . '?_method=PUT', [
             'status_bayar' => $request->input('status_bayar')
         ]);
 
@@ -45,7 +45,7 @@ class RegistrationEventController extends Controller
      */
     public function store(Request $request)
     {
-        $response = Http::asform()->post("https://workforlife-be.my.id/api/registration", [
+        $response = Http::asform()->post("http://workforlife-be.my.id/api/registration", [
             'event_id' => $request->input('event_id'),
             'user_id' => $request->input('user_id')
         ]);
@@ -75,7 +75,7 @@ class RegistrationEventController extends Controller
      */
     public function edit($id)
     {
-        $response = Http::get("https://workforlife-be.my.id/api/event/" . $id);
+        $response = Http::get("http://workforlife-be.my.id/api/event/" . $id);
         $response = $response->object();
         return view('levelup.formdaftar', [
             'title' => 'Detail Event',
@@ -108,7 +108,7 @@ class RegistrationEventController extends Controller
             $imagePath = NULL;
         }
 
-        Http::asForm()->post("https://workforlife-be.my.id/api/payment/" . $id . '?_method=PUT', [
+        Http::asForm()->post("http://workforlife-be.my.id/api/payment/" . $id . '?_method=PUT', [
             'bukti_bayar' => $imagePath
         ]);
 
@@ -122,7 +122,7 @@ class RegistrationEventController extends Controller
 
     public function formPayment($id)
     {
-        $response = Http::get("https://workforlife-be.my.id/api/registration/" . $id);
+        $response = Http::get("http://workforlife-be.my.id/api/registration/" . $id);
         $response = $response->object();
         return view('levelup.konfirmasibayar', [
             'title' => 'Pembayaran',
@@ -138,7 +138,7 @@ class RegistrationEventController extends Controller
      */
     public function destroy($id)
     {
-        Http::delete("https://workforlife-be.my.id/api/post/" . $id);
+        Http::delete("http://workforlife-be.my.id/api/post/" . $id);
         return redirect('/')->with('success', 'Pendaftaran Berhasil Dihapus');
     }
 }

@@ -25,7 +25,7 @@ class VacancyController extends Controller
         // else{
         //     $object = 1;
         // }
-        $response = Http::get('https://workforlife-be.my.id/api/loker', [
+        $response = Http::get('http://workforlife-be.my.id/api/loker', [
             'search' => $request->query('search'),
             'page' => $request->query('page')
         ]);
@@ -79,7 +79,7 @@ class VacancyController extends Controller
      */
     public function store(Request $request)
     {
-        $response = Http::asform()->post("https://workforlife-be.my.id/api/loker", [
+        $response = Http::asform()->post("http://workforlife-be.my.id/api/loker", [
             'company_id' => $request->input('company_id'),
             'posisi' => $request->input('posisi'),
             'jobdesc' => $request->input('jobdesc'),
@@ -103,7 +103,7 @@ class VacancyController extends Controller
      */
     public function show($id)
     {
-        $response = Http::get('https://workforlife-be.my.id/api/loker/' . $id);
+        $response = Http::get('http://workforlife-be.my.id/api/loker/' . $id);
         $response = $response->object();
 
         return view('Loker.view', [
@@ -121,7 +121,7 @@ class VacancyController extends Controller
      */
     public function edit($id)
     {
-        $response = Http::get("https://workforlife-be.my.id/api/loker/" . $id);
+        $response = Http::get("http://workforlife-be.my.id/api/loker/" . $id);
         $response = $response->object();
 
         return view('Loker.editLoker', [
@@ -143,7 +143,7 @@ class VacancyController extends Controller
             'posisi' => 'required|max:255',
         ];
         $validatedData = $request->validate($rules);
-        Http::asform()->post("https://workforlife-be.my.id/api/loker/" . $id . '?_method=PUT', [
+        Http::asform()->post("http://workforlife-be.my.id/api/loker/" . $id . '?_method=PUT', [
             // 'company_id' => $request->input('company_id'),
             'posisi' => $request->input('posisi'),
             'jobdesc' => $request->input('jobdesc'),
@@ -165,7 +165,7 @@ class VacancyController extends Controller
      */
     public function destroy(Vacancy $vacancy)
     {
-        Http::delete("https://workforlife-be.my.id/api/loker/" . $vacancy->id);
+        Http::delete("http://workforlife-be.my.id/api/loker/" . $vacancy->id);
 
         return redirect('/loker')->with('success', 'Loker Berhasil Dihapus');
     }

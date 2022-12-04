@@ -18,7 +18,7 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $response = Http::get('https://workforlife-be.my.id/api/post', [
+        $response = Http::get('http://workforlife-be.my.id/api/post', [
             'search' => $request->query('search'),
             'page' => $request->query('page')
         ]);
@@ -57,7 +57,7 @@ class PostController extends Controller
         //     'deskripsi' => request('deskripsi'),
         //     'user_id' => request('user_id')
         // ]);
-        $request = Http::asform()->post("https://workforlife-be.my.id/api/post", [
+        $request = Http::asform()->post("http://workforlife-be.my.id/api/post", [
             'judul' => $request->input('judul'),
             'deskripsi' => $request->input('deskripsi'),
             'user_id' => $request->input('user_id')
@@ -76,9 +76,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $response = Http::get("https://workforlife-be.my.id/api/post/" . $id);
+        $response = Http::get("http://workforlife-be.my.id/api/post/" . $id);
         $response = $response->object();
-        $response2 = Http::get('https://workforlife-be.my.id/api/posts');
+        $response2 = Http::get('http://workforlife-be.my.id/api/posts');
         $response2 = $response2->object();
         return view('Posts.view', [
             'title' => 'Detail Post',
@@ -96,7 +96,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $response = Http::get("https://workforlife-be.my.id/api/post/" . $id);
+        $response = Http::get("http://workforlife-be.my.id/api/post/" . $id);
         $response = $response->object();
 
         return view('Posts.editPost', [
@@ -122,7 +122,7 @@ class PostController extends Controller
         $validatedData["user_id"] = session()->get('id');
         $validatedData = $request->validate($rules);
 
-        Http::asForm()->post("https://workforlife-be.my.id/api/post/" . $id . '?_method=PUT', [
+        Http::asForm()->post("http://workforlife-be.my.id/api/post/" . $id . '?_method=PUT', [
             'judul' => $request->input('judul'),
             'deskripsi' => $request->input('deskripsi')
         ]);
@@ -137,7 +137,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        Http::delete("https://workforlife-be.my.id/api/post/" . $id);
+        Http::delete("http://workforlife-be.my.id/api/post/" . $id);
 
         return redirect('/posts')->with('success', 'Post has been deleted!');
     }

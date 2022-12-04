@@ -27,7 +27,7 @@ class UserController extends Controller
         $response = Http::withHeaders([
             'Accept' => 'application/json',
             'Authorization' => 'Bearer ' . session('token')
-        ])->get('https://workforlife-be.my.id/api/profile');
+        ])->get('http://workforlife-be.my.id/api/profile');
             $response = $response->object();
             $profilUser = $response->profile;
             $my_posts = $response->post;
@@ -71,7 +71,7 @@ class UserController extends Controller
         $response = Http::withHeaders([
             'Accept' => 'application/json',
             'Authorization' => 'Bearer ' . session('token'),
-        ])->get('https://workforlife-be.my.id/api/profile/'.$user);
+        ])->get('http://workforlife-be.my.id/api/profile/'.$user);
         $response = $response->object();
         $profilUser = $response->profile;
         $my_posts = $response->post;
@@ -91,7 +91,7 @@ class UserController extends Controller
         $response = Http::withHeaders([
             'Accept' => 'application/json',
             'Authorization' => 'Bearer ' . session('token'),
-        ])->get('https://workforlife-be.my.id/api/profile/'.$username.'/edit');
+        ])->get('http://workforlife-be.my.id/api/profile/'.$username.'/edit');
         $profilUsers = $response->object();
         return view('/user/editProfile', compact(['title', 'profilUsers']));
     }
@@ -109,7 +109,7 @@ class UserController extends Controller
         $profilUser = Http::withHeaders([
             'Accept' => 'application/json',
             'Authorization' => 'Bearer ' . session('token'),
-        ])->get('https://workforlife-be.my.id/api/profile/'.session()->get('username').'/edit');
+        ])->get('http://workforlife-be.my.id/api/profile/'.session()->get('username').'/edit');
         $profilUsers = $profilUser->object();
         $pass = null;
         $profil = null;
@@ -151,7 +151,7 @@ class UserController extends Controller
             'Accept' => 'application/json',
             'Authorization' => 'Bearer ' . session('token'),
             ])
-            ->asForm()->post("https://workforlife-be.my.id/api/profile/".session()->get('id').'?_method=PUT', [
+            ->asForm()->post("http://workforlife-be.my.id/api/profile/".session()->get('id').'?_method=PUT', [
             'nama' => $request->input('nama'),
             'username' => $request->input('username'),
             'no_telp' => $request->input('no_telp'),

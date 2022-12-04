@@ -33,7 +33,7 @@ class LoginController extends Controller
         // }
 
         // return back()->with('loginError', 'Login failed!');
-        $response = Http::asForm()->post('https://workforlife-be.my.id/api/login', [
+        $response = Http::asForm()->post('http://workforlife-be.my.id/api/login', [
             'email' => $request->input('email'),
             'password' => $request->input('password'),
         ]);
@@ -72,7 +72,7 @@ class LoginController extends Controller
         $response = Http::withHeaders([
             'Accept' => 'application/json',
             'Authorization' => 'Bearer ' . session('token'),
-        ])->post('https://workforlife-be.my.id/api/logout');
+        ])->post('http://workforlife-be.my.id/api/logout');
         $request->session()->flush();
         // Auth::logout();
         return redirect('/');

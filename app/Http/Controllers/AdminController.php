@@ -21,7 +21,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $response = Http::get('https://workforlife-be.my.id/api/admin');
+        $response = Http::get('http://workforlife-be.my.id/api/admin');
         $response = $response->object();
 
         return view('admin.rekap', [
@@ -68,14 +68,15 @@ class AdminController extends Controller
         // ]);
 
         // $validatedData['password'] = Hash::make($validatedData['password']);
-        Http::asForm()->post("https://workforlife-be.my.id/api/admin/company/create", [
+        Http::asForm()->post("http://workforlife-be.my.id/api/admin/company/create", [
             'nama' => $request->input('nama'),
             'username' => $request->input('username'),
             'email' => $request->input('email'),
             'no_telp' => $request->input('no_telp'),
             'password' => $request->input('password'),
             'role' => $request->input('role'),
-            'company_id' => $request->input('company_id')
+            'company_id' => $request->input('company_id'),
+            'is_approved' => 1
         ]);
         
 
@@ -91,7 +92,7 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        $response = Http::get("https://workforlife-be.my.id/api/company/".$id);
+        $response = Http::get("http://workforlife-be.my.id/api/company/".$id);
         $response = $response->object();
         return view('admin.detail-company', [
             'title' => 'Detail Perusahaan',

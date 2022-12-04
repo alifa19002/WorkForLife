@@ -15,7 +15,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        $response = Http::get('https://workforlife-be.my.id/api/event');
+        $response = Http::get('http://workforlife-be.my.id/api/event');
         $response = $response->object();
         return view('levelup.levelup', [
             'title' => 'Sharing',
@@ -44,7 +44,7 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        $request = Http::asform()->post("https://workforlife-be.my.id/api/event", [
+        $request = Http::asform()->post("http://workforlife-be.my.id/api/event", [
             'nama' => $request->input('nama'),
             'harga' => $request->input('harga'),
             'deskripsi' => $request->input('deskripsi'),
@@ -66,7 +66,7 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        $response = Http::get("https://workforlife-be.my.id/api/event/" . $id);
+        $response = Http::get("http://workforlife-be.my.id/api/event/" . $id);
         $response = $response->object();
         return view('levelup.detailEvent', [
             'title' => 'Detail Event',
@@ -83,7 +83,7 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        $response = Http::get("https://workforlife-be.my.id/api/event/" . $id);
+        $response = Http::get("http://workforlife-be.my.id/api/event/" . $id);
         $response = $response->object();
         return view('admin.edit-event', [
             'title' => 'Edit Event',
@@ -108,7 +108,7 @@ class EventController extends Controller
         //     'link_conference' => 'required'
         // ];
         // $validatedData = $request->validate($rules);
-        $request = Http::asform()->post("https://workforlife-be.my.id/api/event/".$id."?_method=PUT", [
+        $request = Http::asform()->post("http://workforlife-be.my.id/api/event/".$id."?_method=PUT", [
             'nama' => $request->input('nama'),
             'harga' => $request->input('harga'),
             'deskripsi' => $request->input('deskripsi'),
@@ -131,7 +131,7 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        Http::delete("https://workforlife-be.my.id/api/event/" . $id);
+        Http::delete("http://workforlife-be.my.id/api/event/" . $id);
 
         return redirect('/admin')->with('success', 'Event has been deleted!');
     }

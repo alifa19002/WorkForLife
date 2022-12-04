@@ -47,8 +47,8 @@ class CompanyController extends Controller
             'email' => 'required|email:dns|unique:companies',
             'alamat' => 'required|max:255',
         ];
-        $validatedData = $request->validate($rules);
-        Http::asForm()->post("https://workforlife-be.my.id/api/company", [
+        // $validatedData = $request->validate($rules);
+        Http::asForm()->post("http://workforlife-be.my.id/api/company", [
             'user_id' => $request->input('user_id'),
             'nama_perusahaan' => $request->input('nama_perusahaan'),
             'namaCP' => $request->input('namaCP'),
@@ -112,7 +112,7 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        Http::delete("https://workforlife-be.my.id/api/admin/company/" . $id);
+        Http::delete("http://workforlife-be.my.id/api/admin/company/" . $id);
 
         return redirect('/admin')->with('success', 'Perusahaan Berhasil Dihapus');
     }
