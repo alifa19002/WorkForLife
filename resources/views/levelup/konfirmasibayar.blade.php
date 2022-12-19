@@ -90,7 +90,7 @@
             <input class="block w-1/3 text-sm bg-gray-50 rounded-lg border border-gray-300 cursor-pointer focus:outline-none " id="bukti_bayar" name="bukti_bayar" type="file">
         </div>
 
-        <div class="mt-5 mb-5 w-2.5">
+        <div class="mt-5 mb-5">
             <div class="flex justify-center">
                 <button class="px-8 py-2 font-semibold rounded-lg bg-dongker border-2 border-[#123C69] text-white hover:bg-dongker/40 hover:border-[#123C69]/40" type="submit">Submit</button>
             </div>
